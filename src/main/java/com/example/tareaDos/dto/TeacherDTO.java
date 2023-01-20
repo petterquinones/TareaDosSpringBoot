@@ -1,5 +1,7 @@
 package com.example.tareaDos.dto;
 
+import com.example.tareaDos.repository.entity.Teacher;
+
 public class TeacherDTO {
     private Integer identification;
     private String name;
@@ -40,4 +42,13 @@ public class TeacherDTO {
     public void setAge(Integer age) {
         this.age = age;
     }
+
+    public TeacherDTO(Teacher teacher){
+        this.identification = teacher.getIdentification();
+        this.name = teacher.getName();
+        this.lastName = teacher.getLastName();
+        this.age = teacher.getAge();
+        //Faltá course
+    }
+
 }

@@ -1,5 +1,7 @@
 package com.example.tareaDos.repository.entity;
 
+import com.example.tareaDos.dto.TeacherDTO;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -51,6 +53,14 @@ public class Teacher {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+    public Teacher(TeacherDTO teacherDTO){
+        this.identification = teacherDTO.getIdentification();
+        this.name = teacherDTO.getName();
+        this.lastName = teacherDTO.getLastName();
+        this.age = teacherDTO.getAge();
+        //faltaria el course
+
     }
 }
 
