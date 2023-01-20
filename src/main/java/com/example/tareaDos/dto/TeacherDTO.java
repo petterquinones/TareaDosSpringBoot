@@ -2,11 +2,22 @@ package com.example.tareaDos.dto;
 
 import com.example.tareaDos.repository.entity.Teacher;
 
+import java.util.List;
+
 public class TeacherDTO {
     private Integer identificationTeacher;
     private String nameTeacher;
     private String lastNameTeacher;
     private Integer ageTeacher;
+    private List<CourseDTO> courseDTOListTeacher;
+
+    public List<CourseDTO> getCourseDTOListTeacher() {
+        return courseDTOListTeacher;
+    }
+
+    public void setCourseDTOListTeacher(List<CourseDTO> courseDTOListTeacher) {
+        this.courseDTOListTeacher = courseDTOListTeacher;
+    }
 
     public TeacherDTO() {
     }

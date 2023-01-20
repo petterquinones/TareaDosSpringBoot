@@ -5,6 +5,8 @@ import com.example.tareaDos.dto.TeacherDTO;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @Entity
 public class Teacher {
@@ -16,6 +18,16 @@ public class Teacher {
     private String lastNameTeacher;
     @Column(name="AGE-TEACHER")
     private Integer ageTeacher;
+    @OneToMany()//Leer: que argumentos lleva, porque y como se usa
+    private List<Course> courseListTeacher;
+
+    public List<Course> getCourseListTeacher() {
+        return courseListTeacher;
+    }
+
+    public void setCourseListTeacher(List<Course> courseListTeacher) {
+        this.courseListTeacher = courseListTeacher;
+    }
 
     public Teacher() {
     }
