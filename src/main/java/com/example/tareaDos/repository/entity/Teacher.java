@@ -8,59 +8,56 @@ import javax.persistence.Id;
 
 @Entity
 public class Teacher {
-    @Id private Integer identification;
-    @Column(name="NAME_TEACHER", nullable = false) private String name;
-    @Column(name ="LASTNAME_TEACHER", nullable = false) private String lastName;
-    @Column(name="AGE") private Integer age;
+    @Id
+    private Integer identificationTeacher;
+    @Column(name="NAME_TEACHER", nullable = false)
+    private String nameTeacher;
+    @Column(name ="LASTNAME_TEACHER", nullable = false)
+    private String lastNameTeacher;
+    @Column(name="AGE-TEACHER")
+    private Integer ageTeacher;
 
     public Teacher() {
     }
 
-    public Teacher(Integer identification, String name, String lastName, Integer age) {
-        this.identification = identification;
-        this.name = name;
-        this.lastName = lastName;
-        this.age = age;
+    public Integer getIdentificationTeacher() {
+        return identificationTeacher;
     }
 
-    public Integer getIdentification() {
-        return identification;
+    public void setIdentificationTeacher(Integer identificationTeacher) {
+        this.identificationTeacher = identificationTeacher;
     }
 
-    public void setIdentification(Integer identification) {
-        this.identification = identification;
+    public String getNameTeacher() {
+        return nameTeacher;
     }
 
-    public String getName() {
-        return name;
+    public void setNameTeacher(String nameTeacher) {
+        this.nameTeacher = nameTeacher;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getLastNameTeacher() {
+        return lastNameTeacher;
     }
 
-    public String getLastName() {
-        return lastName;
+    public void setLastNameTeacher(String lastNameTeacher) {
+        this.lastNameTeacher = lastNameTeacher;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public Integer getAgeTeacher() {
+        return ageTeacher;
     }
 
-    public Integer getAge() {
-        return age;
+    public void setAgeTeacher(Integer ageTeacher) {
+        this.ageTeacher = ageTeacher;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
-    }
     public Teacher(TeacherDTO teacherDTO){
-        this.identification = teacherDTO.getIdentification();
-        this.name = teacherDTO.getName();
-        this.lastName = teacherDTO.getLastName();
-        this.age = teacherDTO.getAge();
-        //faltaria el course
-
+        this.identificationTeacher = teacherDTO.getIdentificationTeacher();
+        this.nameTeacher = teacherDTO.getNameTeacher();
+        this.lastNameTeacher = teacherDTO.getLastNameTeacher();
+        this.ageTeacher = teacherDTO.getAgeTeacher();
+        //Falta course
     }
 }
 

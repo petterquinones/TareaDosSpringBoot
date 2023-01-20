@@ -3,51 +3,51 @@ package com.example.tareaDos.dto;
 import com.example.tareaDos.repository.entity.Teacher;
 
 public class TeacherDTO {
-    private Integer identification;
-    private String name;
-    private String lastName;
-    private Integer age;
+    private Integer identificationTeacher;
+    private String nameTeacher;
+    private String lastNameTeacher;
+    private Integer ageTeacher;
 
     public TeacherDTO() {
     }
 
-    public Integer getIdentification() {
-        return identification;
+    public Integer getIdentificationTeacher() {
+        return identificationTeacher;
     }
 
-    public void setIdentification(Integer identification) {
-        this.identification = identification;
+    public void setIdentificationTeacher(Integer identificationTeacher) {
+        this.identificationTeacher = identificationTeacher;
     }
 
-    public String getName() {
-        return name;
+    public String getNameTeacher() {
+        return nameTeacher;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameTeacher(String nameTeacher) {
+        this.nameTeacher = nameTeacher;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLastNameTeacher() {
+        return lastNameTeacher;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastNameTeacher(String lastNameTeacher) {
+        this.lastNameTeacher = lastNameTeacher;
     }
 
-    public Integer getAge() {
-        return age;
+    public Integer getAgeTeacher() {
+        return ageTeacher;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setAgeTeacher(Integer ageTeacher) {
+        this.ageTeacher = ageTeacher;
     }
 
     public TeacherDTO(Teacher teacher){
-        this.identification = teacher.getIdentification();
-        this.name = teacher.getName();
-        this.lastName = teacher.getLastName();
-        this.age = teacher.getAge();
+        this.identificationTeacher = teacher.getIdentificationTeacher();
+        this.nameTeacher = teacher.getNameTeacher();
+        this.lastNameTeacher = teacher.getLastNameTeacher();
+        this.ageTeacher = this.getAgeTeacher();
         //Faltá course
     }
 
