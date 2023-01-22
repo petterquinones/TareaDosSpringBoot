@@ -8,7 +8,7 @@ public interface ICourseService {
     void save(CourseDTO courseDTO);
     void update(CourseDTO courseDTO);
     void delete(Integer idCourse);
-    List<CourseDTO>getAll();
+    List<CourseDTO> getAll();
     CourseDTO findById(Integer idCourse);
 
 }

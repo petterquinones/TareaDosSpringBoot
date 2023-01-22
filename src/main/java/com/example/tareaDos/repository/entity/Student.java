@@ -7,7 +7,8 @@ import com.example.tareaDos.dto.StudentDTO;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.util.Date;
+import java.time.LocalDate;
+
 @Entity
 public class Student {
     @Id
@@ -17,12 +18,12 @@ public class Student {
     @Column(name ="LASTNAME_STUDENT", nullable = false)
     private String lasNameStudent;
     @Column(name="AGE-STUDENT", nullable = false)
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth; //LocalDate
 
     public Student() {
     }
 
-    public Student(Integer idStudent, String nameStudent, String lasNameStudent, Date dateOfBirth) {
+    public Student(Integer idStudent, String nameStudent, String lasNameStudent, LocalDate dateOfBirth) {
         IdStudent = idStudent;
         this.nameStudent = nameStudent;
         this.lasNameStudent = lasNameStudent;
@@ -53,11 +54,11 @@ public class Student {
         this.lasNameStudent = lasNameStudent;
     }
 
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

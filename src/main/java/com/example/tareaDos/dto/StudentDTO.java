@@ -2,18 +2,19 @@ package com.example.tareaDos.dto;
 
 import com.example.tareaDos.repository.entity.Student;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class StudentDTO {
     private Integer IdStudent;
     private String nameStudent;
     private String lasNameStudent;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
 
     public StudentDTO() {
     }
 
-    public StudentDTO(Integer idStudent, String nameStudent, String lasNameStudent, Date dateOfBirth) {
+    public StudentDTO(Integer idStudent, String nameStudent, String lasNameStudent, LocalDate dateOfBirth) {
         IdStudent = idStudent;
         this.nameStudent = nameStudent;
         this.lasNameStudent = lasNameStudent;
@@ -44,11 +45,11 @@ public class StudentDTO {
         this.lasNameStudent = lasNameStudent;
     }
 
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
     public StudentDTO(Student student) {
