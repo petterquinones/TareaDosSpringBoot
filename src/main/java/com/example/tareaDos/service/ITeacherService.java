@@ -11,6 +11,6 @@ public interface ITeacherService {
     void update(TeacherDTO teacherDTO);
     void delete(Integer idTeacher);
     List<TeacherDTO> getAll();
-    Optional<TeacherDTO> findById(Integer idTeacher);
+    TeacherDTO findById(Integer idTeacher);
 
 }
