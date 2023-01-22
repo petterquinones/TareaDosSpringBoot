@@ -5,39 +5,62 @@ import com.example.tareaDos.dto.TeacherDTO;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 public class Teacher {
     @Id
-    private Integer identificationTeacher;
+    private Integer idTeacher;
     @Column(name="NAME_TEACHER", nullable = false)
     private String nameTeacher;
     @Column(name ="LASTNAME_TEACHER", nullable = false)
     private String lastNameTeacher;
     @Column(name="AGE-TEACHER")
     private Integer ageTeacher;
-    @OneToMany()//Leer: que argumentos lleva, porque y como se usa
-    private List<Course> courseListTeacher;
 
-    public List<Course> getCourseListTeacher() {
-        return courseListTeacher;
-    }
-
-    public void setCourseListTeacher(List<Course> courseListTeacher) {
-        this.courseListTeacher = courseListTeacher;
-    }
+    @Column(name = "COURSES", nullable = false)
+    private List<Course> courses;
 
     public Teacher() {
     }
 
-    public Integer getIdentificationTeacher() {
-        return identificationTeacher;
+    public List<Course> getCourses() {
+        return courses;
     }
 
-    public void setIdentificationTeacher(Integer identificationTeacher) {
-        this.identificationTeacher = identificationTeacher;
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
+
+    public Teacher(Integer idTeacher, String nameTeacher, String lastNameTeacher, Integer ageTeacher, List<Course> courses) {
+        this.idTeacher = idTeacher;
+        this.nameTeacher = nameTeacher;
+        this.lastNameTeacher = lastNameTeacher;
+        this.ageTeacher = ageTeacher;
+        this.courses = courses;
+    }
+
+    public Teacher(TeacherDTO teacherDTO) {
+        this.idTeacher = teacherDTO.getIdTeacher();
+        this.nameTeacher = teacherDTO.getNameTeacher();
+        this.lastNameTeacher = teacherDTO.getLastNameTeacher();
+        this.ageTeacher = teacherDTO.getAgeTeacher();
+        this.courses = teacherDTO.getCoursesDTO()
+                .stream()
+                .map(Course::new)
+                .collect(Collectors.toList());
+    }
+
+    public Teacher(Teacher teacherCourse) {
+    }
+
+    public Integer getIdTeacher() {
+        return idTeacher;
+    }
+
+    public void setIdTeacher(Integer idTeacher) {
+        this.idTeacher = idTeacher;
     }
 
     public String getNameTeacher() {
@@ -63,19 +86,4 @@ public class Teacher {
     public void setAgeTeacher(Integer ageTeacher) {
         this.ageTeacher = ageTeacher;
     }
-
-    public Teacher(TeacherDTO teacherDTO){
-        this.identificationTeacher = teacherDTO.getIdentificationTeacher();
-        this.nameTeacher = teacherDTO.getNameTeacher();
-        this.lastNameTeacher = teacherDTO.getLastNameTeacher();
-        this.ageTeacher = teacherDTO.getAgeTeacher();
-        //Falta course
-    }
 }
-
-
-//**PENDIENTE
-// Falta agregar course
-// Este no se encuentra recordar que este no esta en getter y setter
-// tampoco se encuentra en el constructor
-// */

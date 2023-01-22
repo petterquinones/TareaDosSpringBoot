@@ -2,36 +2,67 @@ package com.example.tareaDos.dto;
 
 import com.example.tareaDos.repository.entity.Teacher;
 
+import java.awt.*;
 import java.util.List;
+import java.util.stream.Collectors;
+
 
 public class TeacherDTO {
-    private Integer identificationTeacher;
+    private Integer idTeacher;
     private String nameTeacher;
     private String lastNameTeacher;
     private Integer ageTeacher;
-    private List<CourseDTO> courseDTOListTeacher;
 
-    public List<CourseDTO> getCourseDTOListTeacher() {
-        return courseDTOListTeacher;
+    private List<CourseDTO> coursesDTO;
+
+    public List<CourseDTO> getCoursesDTO() {
+        return coursesDTO;
     }
 
-    public void setCourseDTOListTeacher(List<CourseDTO> courseDTOListTeacher) {
-        this.courseDTOListTeacher = courseDTOListTeacher;
+    public void setCoursesDTO(List<CourseDTO> coursesDTO) {
+        this.coursesDTO = coursesDTO;
     }
 
     public TeacherDTO() {
     }
 
-    public Integer getIdentificationTeacher() {
-        return identificationTeacher;
+    public TeacherDTO(Integer idTeacher, String nameTeacher, String lastNameTeacher, Integer ageTeacher, List<CourseDTO> coursesDTO) {
+        this.idTeacher = idTeacher;
+        this.nameTeacher = nameTeacher;
+        this.lastNameTeacher = lastNameTeacher;
+        this.ageTeacher = ageTeacher;
+        this.coursesDTO = coursesDTO;
     }
 
-    public void setIdentificationTeacher(Integer identificationTeacher) {
-        this.identificationTeacher = identificationTeacher;
+    public TeacherDTO(Teacher teacher) {
+        this.idTeacher = teacher.getIdTeacher();
+        this.nameTeacher = teacher.getNameTeacher();
+        this.lastNameTeacher = teacher.getLastNameTeacher();
+        this.ageTeacher = teacher.getAgeTeacher();
+        this.coursesDTO = teacher.getCourses()
+                .stream()
+                .map(CourseDTO::new)
+                .collect(Collectors.toList());
     }
 
     public String getNameTeacher() {
         return nameTeacher;
+    }
+
+    public Integer getIdTeacher() {
+        return idTeacher;
+    }
+
+    public void setIdTeacher(Integer idTeacher) {
+        this.idTeacher = idTeacher;
+    }
+
+    public Integer getAgeTeacher() {
+        return ageTeacher;
+    }
+
+    public void setAgeTeacher(Integer ageTeacher) {
+        this.ageTeacher = ageTeacher;
     }
 
     public void setNameTeacher(String nameTeacher) {
@@ -44,22 +75,6 @@ public class TeacherDTO {
 
     public void setLastNameTeacher(String lastNameTeacher) {
         this.lastNameTeacher = lastNameTeacher;
-    }
-
-    public Integer getAgeTeacher() {
-        return ageTeacher;
-    }
-
-    public void setAgeTeacher(Integer ageTeacher) {
-        this.ageTeacher = ageTeacher;
-    }
-
-    public TeacherDTO(Teacher teacher){
-        this.identificationTeacher = teacher.getIdentificationTeacher();
-        this.nameTeacher = teacher.getNameTeacher();
-        this.lastNameTeacher = teacher.getLastNameTeacher();
-        this.ageTeacher = this.getAgeTeacher();
-        //Faltá course
     }
 
 }

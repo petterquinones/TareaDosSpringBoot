@@ -1,26 +1,30 @@
 package com.example.tareaDos.dto;
 
+import com.example.tareaDos.repository.entity.Course;
 import com.example.tareaDos.repository.entity.Student;
 import com.example.tareaDos.repository.entity.Teacher;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CourseDTO {
 
-    private Integer identificationCourse;
+    private Integer idCourse;
+
+    public void setIdCourse(Integer idCourse) {
+        this.idCourse = idCourse;
+    }
+
     private List<StudentDTO> studentsList;
-    private Teacher teacherCourse;
+    private TeacherDTO teacherCourse;
     private String schedule;
     private String issue;
 
-    public Integer getIdentificationCourse() {
-        return identificationCourse;
+    public Integer getIdCourse() {
+        return idCourse;
     }
 
-    public void setIdentificationCourse(Integer identificationCourse) {
-        this.identificationCourse = identificationCourse;
-    }
 
     public List<StudentDTO> getStudentsList() {
         return studentsList;
@@ -30,16 +34,16 @@ public class CourseDTO {
         this.studentsList = studentsList;
     }
 
-    public Teacher getTeacherCourse() {
+    public String getSchedule() {
+        return schedule;
+    }
+
+    public TeacherDTO getTeacherCourse() {
         return teacherCourse;
     }
 
-    public void setTeacherCourse(Teacher teacherCourse) {
+    public void setTeacherCourse(TeacherDTO teacherCourse) {
         this.teacherCourse = teacherCourse;
-    }
-
-    public String getSchedule() {
-        return schedule;
     }
 
     public void setSchedule(String schedule) {
@@ -53,4 +57,28 @@ public class CourseDTO {
     public void setIssue(String issue) {
         this.issue = issue;
     }
+
+    public CourseDTO() {
+    }
+
+    public CourseDTO(Integer idCourse, List<StudentDTO> studentsList, TeacherDTO teacherCourse, String schedule, String issue) {
+        this.idCourse = idCourse;
+        this.studentsList = studentsList;
+        this.teacherCourse = teacherCourse;
+        this.schedule = schedule;
+        this.issue = issue;
+    }
+
+    public CourseDTO(Course course) {
+        this.idCourse = course.getIdCourse();
+        this.teacherCourse = new TeacherDTO(course.getTeacherCourse());
+        this.studentsList = course.getStudentsList()
+                .stream()
+                .map(StudentDTO::new)
+                .collect(Collectors.toList());
+        this.schedule = course.getSchedule();
+        this.issue = getIssue();
+
+    }
+
 }

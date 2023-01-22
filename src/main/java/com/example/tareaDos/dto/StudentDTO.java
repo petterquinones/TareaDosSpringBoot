@@ -5,7 +5,7 @@ import com.example.tareaDos.repository.entity.Student;
 import java.util.Date;
 
 public class StudentDTO {
-    private Integer IdentificationStudent;
+    private Integer IdStudent;
     private String nameStudent;
     private String lasNameStudent;
     private Date dateOfBirth;
@@ -13,12 +13,19 @@ public class StudentDTO {
     public StudentDTO() {
     }
 
-    public Integer getIdentificationStudent() {
-        return IdentificationStudent;
+    public StudentDTO(Integer idStudent, String nameStudent, String lasNameStudent, Date dateOfBirth) {
+        IdStudent = idStudent;
+        this.nameStudent = nameStudent;
+        this.lasNameStudent = lasNameStudent;
+        this.dateOfBirth = dateOfBirth;
     }
 
-    public void setIdentificationStudent(Integer identificationStudent) {
-        IdentificationStudent = identificationStudent;
+    public Integer getIdStudent() {
+        return IdStudent;
+    }
+
+    public void setIdStudent(Integer idStudent) {
+        IdStudent = idStudent;
     }
 
     public String getNameStudent() {
@@ -44,12 +51,12 @@ public class StudentDTO {
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
-
     public StudentDTO(Student student) {
-        this.IdentificationStudent = student.getIdentificationStudent();
+        this.IdStudent = student.getIdStudent();
         this.nameStudent = student.getNameStudent();
         this.lasNameStudent = student.getLasNameStudent();
         this.dateOfBirth = student.getDateOfBirth();
-        //Falta course
+
     }
+
 }

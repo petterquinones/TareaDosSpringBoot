@@ -1,13 +1,16 @@
 package com.example.tareaDos.repository.entity;
 
+import com.example.tareaDos.dto.CourseDTO;
+
 import javax.persistence.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 public class Course {
     @Id
     @GeneratedValue()//Indagar bien para que se usa antes de agregar al código y como se usa. en que casos es viable
-    private Integer identificationCourse;
+    private Integer IdCourse;
     @OneToMany() //Antes de agregar leer bien los parametros de esta relación uno a muchos
     private List<Student> studentsList;
     @ManyToOne
@@ -18,16 +21,16 @@ public class Course {
     @Column(name = "ISSUE", nullable = false)
     private String issue;
 
-    public Integer getIdentificationCourse() {
-        return identificationCourse;
-    }
-
-    public void setIdentificationCourse(Integer identificationCourse) {
-        this.identificationCourse = identificationCourse;
-    }
-
-    public List<Student> getStudentsList() {
+       public List<Student> getStudentsList() {
         return studentsList;
+    }
+
+    public Integer getIdCourse() {
+        return IdCourse;
+    }
+
+    public void setIdCourse(Integer IdCourse) {
+        this.IdCourse = IdCourse;
     }
 
     public void setStudentsList(List<Student> studentsList) {
@@ -57,6 +60,34 @@ public class Course {
     public void setIssue(String issue) {
         this.issue = issue;
     }
+
+    public Course() {
+    }
+
+    public Course(Integer IdCourse, List<Student> studentsList, Teacher teacherCourse, String schedule, String issue) {
+        this.IdCourse = IdCourse;
+        this.studentsList = studentsList;
+        this.teacherCourse = teacherCourse;
+        this.schedule = schedule;
+        this.issue = issue;
+    }
+
+    public Course(CourseDTO courseDTO) {
+           this.IdCourse = courseDTO.getIdCourse();
+
+           //Creando un nuevo profesor
+           this.teacherCourse = new Teacher(courseDTO.getTeacherCourse());
+
+           //Me trae una lista de estudiantes del curso
+           this.studentsList = courseDTO.getStudentsList()
+                   .stream()
+                   .map(Student::new)
+                   .collect(Collectors.toList());
+
+           this.schedule = courseDTO.getSchedule();
+           this.issue = courseDTO.getIssue();
+
+    }
+
 }
 
-//falta agregar los constructores
