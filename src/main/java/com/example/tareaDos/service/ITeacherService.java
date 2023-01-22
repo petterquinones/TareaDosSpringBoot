@@ -3,14 +3,14 @@ package com.example.tareaDos.service;
 import com.example.tareaDos.dto.TeacherDTO;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ITeacherService {
 
-    void save(TeacherDTO teacherDTO); //Guardar
-
-    List<TeacherDTO> getAll(); //Método para obtener la lista de todos los profesoresDTO
-    void update(TeacherDTO teacherDTO); //Actualizar ProfesorDTO
-    void delete(Integer idTeacher); //Eliminar por ID un profesor
-    TeacherDTO findById(Integer idTeacher); //Buscar por el IDTeacher
+    void save(TeacherDTO teacherDTO);
+    void update(TeacherDTO teacherDTO);
+    void delete(Integer idTeacher);
+    List<TeacherDTO> getAll();
+    Optional<TeacherDTO> findById(Integer idTeacher);
 
 }
