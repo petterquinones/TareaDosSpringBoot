@@ -47,13 +47,13 @@ public class TeacherServiceImplement implements ITeacherService {
     public List<TeacherDTO> getAll() {
         List<Teacher> teachers = (List<Teacher>)repository.findAll();
         return teachers.stream()
-                .map(teacher -> new TeacherDTO(teacher))
+                .map(TeacherDTO::new)//teacher -> new TeacherDTO(teacher)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public Optional<TeacherDTO> findById(Integer idTeacher) {
-        Optional<Teacher> teacher = repository.findById(idTeacher);
-        return teacher.map(t -> new TeacherDTO(t)); //Como hacer que retorne nulo
+    public TeacherDTO findById(Integer idTeacher) {
+        Optional<Teacher> teachers = repository.findById(idTeacher);
+        return teachers.map(TeacherDTO::new).orElse(null); //t -> new TeacherDTO(t) Como hacer que retorne nulo
     }
 }
