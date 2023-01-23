@@ -2,9 +2,7 @@ package com.example.tareaDos.repository.entity;
 
 import com.example.tareaDos.dto.TeacherDTO;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,10 +14,9 @@ public class Teacher {
     private String nameTeacher;
     @Column(name ="LASTNAME_TEACHER", nullable = false)
     private String lastNameTeacher;
-    @Column(name="AGE-TEACHER")
+    @Column(name="AGE_TEACHER")
     private Integer ageTeacher;
-
-    @Column(name = "COURSES", nullable = false)
+    @OneToMany(mappedBy = "teacherCourse")
     private List<Course> courses;
 
     public Teacher() {

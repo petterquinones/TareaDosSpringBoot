@@ -1,6 +1,7 @@
 package com.example.tareaDos.repository.entity;
 
 import com.example.tareaDos.dto.CourseDTO;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,17 +12,18 @@ public class Course {
     @Id
     @GeneratedValue()//Indagar bien para que se usa antes de agregar al código y como se usa. en que casos es viable
     private Integer IdCourse;
-    @OneToMany() //Antes de agregar leer bien los parametros de esta relación uno a muchos
+    @JsonManagedReference
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, fetch = FetchType.LAZY) //Antes de agregar leer bien los parametros de esta relación uno a muchos
     private List<Student> studentsList;
     @ManyToOne
-    @JoinColumn(name = "TEACHER-ID")
+    @JoinColumn(name = "teacher",referencedColumnName = "idTeacher")
     private Teacher teacherCourse;
     @Column(name = "SCHEDULE", nullable = false)
     private String schedule;
     @Column(name = "ISSUE", nullable = false)
     private String issue;
 
-       public List<Student> getStudentsList() {
+    public List<Student> getStudentsList() {
         return studentsList;
     }
 

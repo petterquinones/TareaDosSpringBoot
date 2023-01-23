@@ -10,17 +10,26 @@ public class StudentDTO {
     private String nameStudent;
     private String lasNameStudent;
     private LocalDate dateOfBirth;
+    private CourseDTO courseDTO;
 
     public StudentDTO() {
     }
 
-    public StudentDTO(Integer idStudent, String nameStudent, String lasNameStudent, LocalDate dateOfBirth) {
+    public StudentDTO(Integer idStudent, String nameStudent, String lasNameStudent, LocalDate dateOfBirth, CourseDTO courseDTO) {
         IdStudent = idStudent;
         this.nameStudent = nameStudent;
         this.lasNameStudent = lasNameStudent;
         this.dateOfBirth = dateOfBirth;
+        this.courseDTO = courseDTO;
     }
+    public StudentDTO(Student student) {
+        this.IdStudent = student.getIdStudent();
+        this.nameStudent = student.getNameStudent();
+        this.lasNameStudent = student.getLasNameStudent();
+        this.dateOfBirth = student.getDateOfBirth();
+        this.courseDTO = student.getCourse();
 
+    }
     public Integer getIdStudent() {
         return IdStudent;
     }
@@ -52,12 +61,12 @@ public class StudentDTO {
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
-    public StudentDTO(Student student) {
-        this.IdStudent = student.getIdStudent();
-        this.nameStudent = student.getNameStudent();
-        this.lasNameStudent = student.getLasNameStudent();
-        this.dateOfBirth = student.getDateOfBirth();
 
+    public CourseDTO getCourseDTO() {
+        return courseDTO;
     }
 
+    public void setCourseDTO(CourseDTO courseDTO) {
+        this.courseDTO = courseDTO;
+    }
 }
